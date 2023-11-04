@@ -231,8 +231,6 @@ class InputCodeDecoration {
   final double? height;
   final double? focusAlignment;
 
-//TODO: documentation
-//TODO: assert required fields
   const InputCodeDecoration({
     this.color,
     this.focusColor,
@@ -241,9 +239,9 @@ class InputCodeDecoration {
     this.disableTextStyle,
     this.box,
     this.focusedBox,
-    this.width: 0.0,
-    this.height: 56.0,
-    this.focusAlignment: -16.0,
+    this.width = 0.0,
+    this.height = 56.0,
+    this.focusAlignment = -16.0,
   });
 }
 
@@ -271,16 +269,16 @@ class InputCodeField extends StatefulWidget {
   InputCodeField({
     Key? key,
     @required this.control,
-    this.count: 6,
-    this.spacing: 8.0, //TODO: move to decoration
-    this.autofocus: false,
-    this.inputType: TextInputType.number,
-    this.inputAction: TextInputAction.done,
+    this.count = 6,
+    this.spacing = 8.0, //TODO: move to decoration
+    this.autofocus = false,
+    this.inputType = TextInputType.number,
+    this.inputAction = TextInputAction.done,
     this.itemBuilder,
     this.builder,
     this.decoration, //TODO: default const decoration with assert
-    this.enabled: true,
-    this.obscure: false,
+    this.enabled = true,
+    this.obscure = false,
   })  : assert(count > 0),
         super(key: key);
 
@@ -306,7 +304,7 @@ class _InputCodeFieldState extends State<InputCodeField> implements TextInputCli
     control._setCodeConfiguration(widget.count, widget.obscure);
 
     if (widget.autofocus) {
-      WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
         if (mounted) {
           FocusScope.of(context).autofocus(control.focusNode);
         }
@@ -463,5 +461,35 @@ class _InputCodeFieldState extends State<InputCodeField> implements TextInputCli
 
     control.removeListener(_notifyState);
     control._dispose();
+  }
+
+  @override
+  void didChangeInputControl(TextInputControl? oldControl, TextInputControl? newControl) {
+    // TODO: implement didChangeInputControl
+  }
+
+  @override
+  void insertContent(KeyboardInsertedContent content) {
+    // TODO: implement insertContent
+  }
+
+  @override
+  void insertTextPlaceholder(Size size) {
+    // TODO: implement insertTextPlaceholder
+  }
+
+  @override
+  void performSelector(String selectorName) {
+    // TODO: implement performSelector
+  }
+
+  @override
+  void removeTextPlaceholder() {
+    // TODO: implement removeTextPlaceholder
+  }
+
+  @override
+  void showToolbar() {
+    // TODO: implement showToolbar
   }
 }
