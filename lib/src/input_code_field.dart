@@ -398,8 +398,8 @@ class _InputCodeFieldState extends State<InputCodeField> implements TextInputCli
                 child: Text(
                   (control[index].isNotEmpty && control.isObscured) ? '•' : control[index],
                   style: widget.enabled
-                      ? (decoration.textStyle ?? theme.primaryTextTheme.headline3)
-                      : (decoration.disableTextStyle ?? theme.primaryTextTheme.headline3!.copyWith(color: theme.disabledColor)),
+                      ? (decoration.textStyle ?? theme.primaryTextTheme.displaySmall)
+                      : (decoration.disableTextStyle ?? theme.primaryTextTheme.displaySmall!.copyWith(color: theme.disabledColor)),
                 ),
               ),
             ),
