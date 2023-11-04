@@ -56,6 +56,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final InputCodeControl inputCodeControl = InputCodeControl();
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -96,8 +98,22 @@ class _MyHomePageState extends State<MyHomePage> {
             const Text(
               'Here an example of a CodeField',
             ),
-            InputCodeField(
-              control: InputCodeControl(),
+            FractionallySizedBox(
+              widthFactor: 2 / 3,
+              child: InputCodeField(
+                control: inputCodeControl,
+                decoration: InputCodeDecoration(textStyle: Theme.of(context).textTheme.headlineSmall),
+                autofocus: true,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 16.0),
+              child: ElevatedButton(
+                onPressed: () {
+                  FocusScope.of(context).unfocus();
+                },
+                child: Text("Submit"),
+              ),
             ),
           ],
         ),
