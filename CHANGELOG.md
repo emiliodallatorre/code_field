@@ -1,3 +1,7 @@
+## 2.0.1
+
+* Auto-fixes by Dart fix tool
+
 ## 2.0.0
 
 * Migrated package to Flutter 3.0
