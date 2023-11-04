@@ -1,17 +1,25 @@
-Widget providing input code field to insert pin, sms and other auth codes.\
-Also can be used for time/date or any highly formatted input.\
-And supports **backspace** keyboard button.
+# Input Code Field
+
+InputCodeField widget provides a text field for entering pin codes, SMS codes, and other authentication codes. It can also be used for entering highly formatted inputs, such as dates and times. The widget supports the backspace keyboard button.
+
+## Support Development ☕
+
+Developing and maintaining this plugin takes time and effort. If you find this plugin useful and would like to show your appreciation, consider making a donation. Your contributions help ensure the continued development and improvement of the plugin. 🚀
+
+You can make a donation and buy me a cup of coffee to keep the momentum going:
+
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/emiliodallatorre)
+
+Your support is invaluable, and every donation is deeply appreciated. Thank you for helping to make this plugin even better! 🙏
+
+## Usage
+
+`InputCodeControl` handles all logic, validation, and state management for the code field. It also stores the current value and an index pointer to the next field.
+
+`InputCodeField` is a standard text field with an underline that can be customized using InputCodeDecoration. It supports enabling and disabling the field, obscuring the input, and setting the size, color, and other properties of the field.
 
 ```dart
-import 'package:code_field/code_field.dart';
-```
-
-`InputCodeControl` handles all logic parts, input validation, holds current value and index pointer to next field.
-
-Standard `InputCodeField` is drawn with underline and can be customized with `InputCodeDecoration`. Supports enable/disable state, obscuring, sizing, coloring, etc..
-
-```dart
-final codeControl = InputCodeControl(inputRegex: '^[0-9]*$');
+final InputCodeControl codeControl = InputCodeControl(inputRegex: '^[0-9]*$');
 
 InputCodeField(
   control: codeControl,
@@ -25,9 +33,9 @@ InputCodeField(
 
 ![Structure](https://raw.githubusercontent.com/emiliodallatorre/input_code_field/master/doc/code.png)
 
-For better visual control can be used **itemBuilder** to build custom Field Item.\
-To get char at given index use `[]` operator on **InputCodeControl**.\
-To check if item at given index is focused use `InputCodeControl.isFocused(index)` and `InputCodeControl.hasFocus` to check if whole Widget has focus.
+### Manual customization
+
+For better visual control, you can use the `itemBuilder` callback to build custom field items. To get the character at a given index, use the `[]` operator on the `InputCodeControl` object. To check if an item at a given index is focused, use the `InputCodeControl.isFocused(index)` method. To check if the entire widget has focus, use the `InputCodeControl.hasFocus` method.
 
 ```dart
 InputCodeField(
@@ -47,9 +55,9 @@ class CustomCodeItem extends StatelessWidget {
 
   const CustomCodeItem({
     Key key,
-    this.char: '',
-    this.fieldFocused: false,
-    this.itemFocused: false,
+    this.char = '',
+    this.fieldFocused = false,
+    this.itemFocused = false,
   }) : super(key: key);
 
   @override
@@ -75,7 +83,7 @@ class CustomCodeItem extends StatelessWidget {
 
 ![Structure](https://raw.githubusercontent.com/emiliodallatorre/input_code_field/master/doc/code_item.png)
 
-For total visual control use **builder** to build whole input widget. `InputCodeField` and `InputCodeControl` still handles all input logic and keyboard actions.
+For total visual control, use the `builder` callback to build the entire input widget. `InputCodeField` and `InputCodeControl` will still handle all input logic and keyboard actions.
 
 ```dart
 InputCodeField(
@@ -91,12 +99,12 @@ class CustomCodeField extends StatelessWidget {
 
   const CustomCodeField({
     Key key,
-    this.control,
+    required this.control,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final items = List<Widget>();
+    final List<Widget> items = <Widget>[];
 
     for (int i = 0; i < control.count; i++) {
       if (i > 0 && i % 3 == 0) {
@@ -154,6 +162,13 @@ class CustomCodeField extends StatelessWidget {
 
 ![Structure](https://raw.githubusercontent.com/emiliodallatorre/input_code_field/master/doc/code_widget.png)
 
-**What's missing:**
-- overriding/editing from middle
-- copy/paste toolbar
+
+## Features and known bugs
+
+### Missing features
+* Overriding or editing the code from the middle
+* A copy/paste toolbar
+
+## Credits
+* Migrated to Flutter 3.0 by [Emilio Dalla Torre](https://emiliodallatorre.it)
+* Original author: [RomanBase](https://basecontrol.dev)
