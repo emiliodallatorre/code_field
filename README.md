@@ -1,6 +1,6 @@
 # Input Code Field
 
-InputCodeField widget provides a text field for entering pin codes, SMS codes, and other authentication codes. It can also be used for entering highly formatted inputs, such as dates and times. The widget supports the backspace keyboard button.
+`InputCodeControl` widget provides a text field for entering pin codes, SMS codes, and other authentication codes. It can also be used for entering highly formatted inputs, such as dates and times. The widget supports the backspace keyboard button.
 
 ## Support Development ☕
 
