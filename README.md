@@ -23,7 +23,7 @@ InputCodeField(
 ),
 ```
 
-![Structure](https://raw.githubusercontent.com/RomanBase/code_field/master/doc/code.png)
+![Structure](https://raw.githubusercontent.com/emiliodallatorre/input_code_field/master/doc/code.png)
 
 For better visual control can be used **itemBuilder** to build custom Field Item.\
 To get char at given index use `[]` operator on **InputCodeControl**.\
@@ -73,7 +73,7 @@ class CustomCodeItem extends StatelessWidget {
 }
 ```
 
-![Structure](https://raw.githubusercontent.com/RomanBase/code_field/master/doc/code_item.png)
+![Structure](https://raw.githubusercontent.com/emiliodallatorre/input_code_field/master/doc/code_item.png)
 
 For total visual control use **builder** to build whole input widget. `InputCodeField` and `InputCodeControl` still handles all input logic and keyboard actions.
 
@@ -152,7 +152,7 @@ class CustomCodeField extends StatelessWidget {
 }
 ```
 
-![Structure](https://raw.githubusercontent.com/RomanBase/code_field/master/doc/code_widget.png)
+![Structure](https://raw.githubusercontent.com/emiliodallatorre/input_code_field/master/doc/code_widget.png)
 
 **What's missing:**
 - overriding/editing from middle
