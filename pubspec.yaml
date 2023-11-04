@@ -1,5 +1,5 @@
-name: code_field
-description: Widget providing input code field to insert pin, sms and other auth codes.
+name: input_code_field
+description: Widget providing input code field to insert PIN, SMS OTPs and other auth codes.
 version: 1.22.0
 
 homepage: https://github.com/emiliodallatorre/input_code_field

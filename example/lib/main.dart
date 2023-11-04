@@ -1,5 +1,5 @@
-import 'package:code_field/code_field.dart';
 import 'package:flutter/material.dart';
+import 'package:input_code_field/input_code_field.dart';
 
 void main() {
   runApp(const CodeFieldDemo());

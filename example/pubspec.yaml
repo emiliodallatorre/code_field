@@ -26,7 +26,7 @@ dependencies:
 
   flutter_control: any
 
-  code_field:
+  input_code_field:
     path: ../
 
 dev_dependencies:
