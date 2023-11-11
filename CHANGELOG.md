@@ -1,4 +1,8 @@
-## 2.0.1
+# 2.0.2
+
+* Re-formatted some code to improve scores on [pub.dev](https://pub.dev/packages/input_code_field)
+
+# 2.0.1
 
 * Auto-fixes by Dart fix tool
 
