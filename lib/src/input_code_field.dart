@@ -28,7 +28,8 @@ class InputCodeControl extends ChangeNotifier {
   TextEditingValue _value = TextEditingValue();
 
   /// Current text value with correct cursor position.
-  TextEditingValue get _valueCursor => _value.copyWith(selection: TextSelection.collapsed(offset: activeIndex));
+  TextEditingValue get _valueCursor =>
+      _value.copyWith(selection: TextSelection.collapsed(offset: activeIndex));
 
   /// Returns current text value.
   String get value => _value.text;
@@ -184,7 +185,8 @@ class InputCodeControl extends ChangeNotifier {
   /// Checks if field at given [index] is focused.
   /// [clamp] - Returned value is clamped between 0 and last possible index - useful to highlight last field when is filled.
   bool isFocused(int index, [bool clamp = false]) {
-    return hasFocus && (clamp ? math.min(_activeIndex, count - 1) : _activeIndex) == index;
+    return hasFocus &&
+        (clamp ? math.min(_activeIndex, count - 1) : _activeIndex) == index;
   }
 
   /// Clears current text and sets empty [TextEditingValue].
@@ -287,7 +289,8 @@ class InputCodeField extends StatefulWidget {
 }
 
 /// State of [InputCodeField].
-class _InputCodeFieldState extends State<InputCodeField> implements TextInputClient {
+class _InputCodeFieldState extends State<InputCodeField>
+    implements TextInputClient {
   InputCodeControl get control => widget.control!;
 
   TextInputConfiguration get _inputConfig => TextInputConfiguration(
@@ -322,7 +325,8 @@ class _InputCodeFieldState extends State<InputCodeField> implements TextInputCli
   void didUpdateWidget(InputCodeField oldWidget) {
     super.didUpdateWidget(oldWidget);
 
-    if (widget.count != oldWidget.count || widget.obscure != oldWidget.obscure) {
+    if (widget.count != oldWidget.count ||
+        widget.obscure != oldWidget.obscure) {
       control._setCodeConfiguration(widget.count, widget.obscure);
     }
   }
@@ -361,7 +365,10 @@ class _InputCodeFieldState extends State<InputCodeField> implements TextInputCli
         ? Row(
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.max,
-            children: List<Widget>.generate(widget.count, (index) => _buildInput(context, index, control.isFocused(index) && widget.enabled))
+            children: List<Widget>.generate(
+                    widget.count,
+                    (index) => _buildInput(context, index,
+                        control.isFocused(index) && widget.enabled))
                 .expand((item) sync* {
                   yield SizedBox(width: widget.spacing);
                   yield item;
@@ -380,15 +387,20 @@ class _InputCodeFieldState extends State<InputCodeField> implements TextInputCli
         ? Flexible(
             fit: decoration.width! > 0.0 ? FlexFit.loose : FlexFit.tight,
             child: Container(
-              constraints: BoxConstraints.expand(width: decoration.width, height: decoration.height),
+              constraints: BoxConstraints.expand(
+                  width: decoration.width, height: decoration.height),
               decoration: (hasFocus ? decoration.focusedBox : decoration.box) ??
                   BoxDecoration(
                     //TODO: animate decoration ?
                     border: Border(
                       bottom: BorderSide(
                         color: (hasFocus
-                                ? (decoration.focusColor ?? theme.primaryColorDark)
-                                : (widget.enabled ? (decoration.color ?? theme.primaryColor) : (decoration.disableColor ?? theme.disabledColor)))
+                                ? (decoration.focusColor ??
+                                    theme.primaryColorDark)
+                                : (widget.enabled
+                                    ? (decoration.color ?? theme.primaryColor)
+                                    : (decoration.disableColor ??
+                                        theme.disabledColor)))
                             .withOpacity(control.hasFocus ? 1.0 : 0.5),
                         width: 2.0,
                       ),
@@ -396,10 +408,15 @@ class _InputCodeFieldState extends State<InputCodeField> implements TextInputCli
                   ),
               child: Center(
                 child: Text(
-                  (control[index].isNotEmpty && control.isObscured) ? '•' : control[index],
+                  (control[index].isNotEmpty && control.isObscured)
+                      ? '•'
+                      : control[index],
                   style: widget.enabled
-                      ? (decoration.textStyle ?? theme.primaryTextTheme.displaySmall)
-                      : (decoration.disableTextStyle ?? theme.primaryTextTheme.displaySmall!.copyWith(color: theme.disabledColor)),
+                      ? (decoration.textStyle ??
+                          theme.primaryTextTheme.displaySmall)
+                      : (decoration.disableTextStyle ??
+                          theme.primaryTextTheme.displaySmall!
+                              .copyWith(color: theme.disabledColor)),
                 ),
               ),
             ),
@@ -435,7 +452,8 @@ class _InputCodeFieldState extends State<InputCodeField> implements TextInputCli
   void performAction(TextInputAction action) => control._onDone();
 
   @override
-  void updateEditingValue(TextEditingValue value) => control._updateValue(value);
+  void updateEditingValue(TextEditingValue value) =>
+      control._updateValue(value);
 
   @override
   TextEditingValue get currentTextEditingValue => control._value;
@@ -464,7 +482,8 @@ class _InputCodeFieldState extends State<InputCodeField> implements TextInputCli
   }
 
   @override
-  void didChangeInputControl(TextInputControl? oldControl, TextInputControl? newControl) {
+  void didChangeInputControl(
+      TextInputControl? oldControl, TextInputControl? newControl) {
     // TODO: implement didChangeInputControl
   }
 
